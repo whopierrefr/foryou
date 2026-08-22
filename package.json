@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build && node -e \"const fs=require('fs'); if(!fs.existsSync('dist')) fs.mkdirSync('dist'); fs.cpSync('public', 'dist', {recursive:true});\"",
+        "build": "vite build && node -e \"const fs=require('fs'); const m=JSON.parse(fs.readFileSync('public/build/manifest.json','utf8')); const js=m['resources/js/app.jsx'].file; const css=m['resources/css/app.css'].file; let html=fs.readFileSync('public/index.html','utf8'); html=html.replace(/\\/build\\/assets\\/app-[^\\\"']+\\.css/g, '/build/'+css).replace(/\\/build\\/assets\\/app-[^\\\"']+\\.js/g, '/build/'+js); fs.writeFileSync('public/index.html', html); if(!fs.existsSync('dist')) fs.mkdirSync('dist'); fs.cpSync('public', 'dist', {recursive:true});\"",
         "dev": "vite"
     },
     "devDependencies": {
