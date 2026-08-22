@@ -178,3 +178,48 @@ export function playFlowerBloomChimes() {
   } catch (e) {}
 }
 
+// Cartoon Pig "OINK OINK!" Sound Effect
+export function playPigOinkSound() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    [0, 0.16].forEach((delay, idx) => {
+      const startTime = ctx.currentTime + delay;
+      
+      const osc = ctx.createOscillator();
+      const modOsc = ctx.createOscillator();
+      const modGain = ctx.createGain();
+      const filter = ctx.createBiquadFilter();
+      const gain = ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(140 + idx * 30, startTime);
+      osc.frequency.exponentialRampToValueAtTime(340 + idx * 40, startTime + 0.05);
+      osc.frequency.exponentialRampToValueAtTime(110, startTime + 0.14);
+
+      modOsc.type = 'sine';
+      modOsc.frequency.setValueAtTime(38, startTime);
+      modGain.gain.setValueAtTime(50, startTime);
+      modOsc.connect(modGain);
+      modGain.connect(osc.frequency);
+
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(560, startTime);
+      filter.Q.setValueAtTime(3.8, startTime);
+
+      gain.gain.setValueAtTime(0.45, startTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.14);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+
+      modOsc.start(startTime);
+      osc.start(startTime);
+      modOsc.stop(startTime + 0.15);
+      osc.stop(startTime + 0.15);
+    });
+  } catch (e) {}
+}
+

@@ -2,14 +2,14 @@ import React from 'react';
 import { X } from 'lucide-react';
 import SpiderCake from './SpiderCake';
 import HeroDossier from './HeroDossier';
-import LiveGuestbook from './LiveGuestbook';
-import SurpriseSpammer from './SurpriseSpammer';
+import PeterPorker from './PeterPorker';
+import SpecialVideoPlayer from './SpecialVideoPlayer';
 import { playComicPopSound } from '../utils/soundEffects';
 
 export default function FlowerSurpriseModals({ activeModal, onClose, heroName = 'Maxi', quote }) {
   if (!activeModal) return null;
 
-  const defaultQuote = quote || "Happy Birthday, superhero Maxi! May your special year be packed with cartoon-level fun, lots of laughs, unstoppable courage, and limitless joy! Keep swinging higher, shining bright, and becoming more awesome every single day! 🌟🕸️";
+  const defaultQuote = quote || "Happy Birthday, Maxi! Another year older, but definitely cooler! Hope your day is filled with endless laughs, good food, and zero drama. Eat as much cake as you want today, calories don't count on birthdays anyway!";
 
   return (
     <div
@@ -26,14 +26,14 @@ export default function FlowerSurpriseModals({ activeModal, onClose, heroName = 
             <span className="text-xl">
               {activeModal === 'cake' && '🎂'}
               {activeModal === 'letter' && '💌'}
-              {activeModal === 'guestbook' && '📝'}
-              {activeModal === 'surprise' && '💥'}
+              {activeModal === 'guestbook' && '🐷'}
+              {activeModal === 'surprise' && '🎬'}
             </span>
             <h2 className="font-['Bangers'] text-lg sm:text-xl text-[#0F172A] tracking-wider">
-              {activeModal === 'cake' && 'SPIDER-CAKE CEREMONY'}
+              {activeModal === 'cake' && 'SWEET VOICE & COMPLIMENT FOR MAXI'}
               {activeModal === 'letter' && "SPIDEY'S SPECIAL LETTER FOR MAXI"}
-              {activeModal === 'guestbook' && 'LIVE HERO GUESTBOOK & WISHES'}
-              {activeModal === 'surprise' && 'SURPRISE WEB SHOOTER SPAMMER'}
+              {activeModal === 'guestbook' && 'PETER PORKER (SPIDER-HAM)'}
+              {activeModal === 'surprise' && 'SPECIAL VIDEO FOR MAXI'}
             </h2>
           </div>
 
@@ -52,8 +52,8 @@ export default function FlowerSurpriseModals({ activeModal, onClose, heroName = 
         <div className="p-4 sm:p-6 overflow-y-auto max-h-[calc(90vh-70px)] bg-[#FFF1F2]">
           {activeModal === 'cake' && <SpiderCake />}
           {activeModal === 'letter' && <HeroDossier quote={defaultQuote} />}
-          {activeModal === 'guestbook' && <LiveGuestbook />}
-          {activeModal === 'surprise' && <SurpriseSpammer />}
+          {activeModal === 'guestbook' && <PeterPorker />}
+          {activeModal === 'surprise' && <SpecialVideoPlayer />}
         </div>
       </div>
     </div>

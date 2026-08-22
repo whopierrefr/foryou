@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Sparkles, Heart } from 'lucide-react';
+import { X, Sparkles } from 'lucide-react';
 import { playComicPopSound } from '../utils/soundEffects';
 
 export default function PhotoScrapbookModal({ isOpen, onClose }) {
@@ -10,81 +10,70 @@ export default function PhotoScrapbookModal({ isOpen, onClose }) {
   const scrapbookPhotos = [
     {
       id: 1,
-      url: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=700&q=80',
-      caption: 'Happy Birthday Vibes! 🎉',
-      date: '22 August',
-      rotate: '-rotate-2',
-      badge: 'SPECIAL 💖',
+      url: '/images/maxi-roblox.png',
+      caption: 'Simply The Cutest',
+      date: 'Adorable & Sweet',
+      badge: 'CUTEST',
       badgeColor: 'bg-[#FEF08A] text-[#0F172A]',
     },
     {
       id: 2,
-      url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=700&q=80',
-      caption: 'Unstoppable Energy 🚀',
-      date: 'Pure Joy',
-      rotate: 'rotate-3',
-      badge: 'HERO! 🕷️',
+      url: '/images/maxi-photo-2.png',
+      caption: 'Pure, Graceful & Beautiful',
+      date: 'Effortlessly Stunning',
+      badge: 'GORGEOUS',
       badgeColor: 'bg-[#FF4D6D] text-white',
     },
     {
       id: 3,
-      url: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=700&q=80',
-      caption: 'Sweetest Smile Forever ✨',
-      date: 'Best Moments',
-      rotate: '-rotate-3',
-      badge: 'CUTE! 🌸',
+      url: '/images/maxi-spidey-suit.png',
+      caption: 'Prettiest Superhero Ever',
+      date: 'Captivating Beauty',
+      badge: 'LOVELY',
       badgeColor: 'bg-[#38BDF8] text-white',
     },
     {
       id: 4,
-      url: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=700&q=80',
-      caption: 'Celebrate & Laugh Loud 🥳',
-      date: 'Magic Hour',
-      rotate: 'rotate-2',
-      badge: 'MEMORIES 🌟',
+      url: '/images/maxi-yellow-photo.png',
+      caption: 'Radiant Like Pure Sunshine',
+      date: 'Golden & Breathtaking',
+      badge: 'RADIANT',
       badgeColor: 'bg-[#FEF08A] text-[#0F172A]',
     },
     {
       id: 5,
-      url: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=700&q=80',
-      caption: 'Shine Bright Like A Star 🌟',
-      date: 'Sparkle Time',
-      rotate: '-rotate-1',
-      badge: 'BLESSED ✨',
+      url: '/images/powerpuff-group.png',
+      caption: 'Sugar, Spice & Pure Charm',
+      date: 'Forever Iconic',
+      badge: 'ICONIC',
       badgeColor: 'bg-[#E9D5FF] text-[#0F172A]',
     },
     {
       id: 6,
-      url: '/images/promise-proof.png',
-      caption: 'The Promise Fulfilled 📜❤️',
-      date: 'Since July 2026',
-      rotate: 'rotate-2',
-      badge: 'PROMISE 🤝',
+      url: '/images/maxi-mask-photo.png',
+      caption: 'Mysterious, Fierce & Aesthetic',
+      date: 'Uniquely Charming',
+      badge: 'CHARMING',
       badgeColor: 'bg-[#FF3366] text-white',
     },
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md animate-fade-in">
       
-      {/* Scrapbook Container (Red Spidey Theme inspired by attachment) */}
-      <div className="relative w-full max-w-4xl max-h-[90vh] bg-gradient-to-br from-[#E6194B] via-[#D90429] to-[#990024] rounded-3xl border-4 border-[#0F172A] shadow-[8px_8px_0_#0F172A,0_20px_50px_rgba(0,0,0,0.6)] flex flex-col overflow-hidden animate-comic-pop">
+      {/* Spacious Scrapbook Board Container */}
+      <div className="relative w-full max-w-5xl lg:max-w-6xl max-h-[90vh] bg-slate-900/95 backdrop-blur-xl rounded-3xl border-3 border-pink-500/40 shadow-[0_25px_60px_rgba(0,0,0,0.85),0_0_30px_rgba(255,77,109,0.25)] flex flex-col animate-comic-pop">
         
         {/* Subtle Web Texture Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff12_1px,transparent_1px)] [background-size:18px_18px] pointer-events-none rounded-3xl" />
         
-        {/* Top Header Bar */}
-        <div className="relative z-10 px-5 sm:px-8 pt-5 pb-3 flex items-center justify-between border-b-3 border-[#0F172A] bg-white/10 backdrop-blur-sm">
-          
-          {/* Playful Scrapbook Handwritten Title */}
-          <div className="flex items-center gap-2 text-white">
-            <span className="text-xl sm:text-2xl">📸</span>
-            <h2 className="font-['Permanent_Marker'] text-lg sm:text-2xl tracking-wide text-white drop-shadow-[2px_2px_0_#0F172A]">
-              we take pictures so we can remember... ❤️
-            </h2>
+        {/* Top Header Row with Clear Dedicated Space */}
+        <div className="relative z-20 px-5 sm:px-8 pt-5 pb-3 flex items-center justify-between border-b border-white/10 shrink-0">
+          <div className="inline-flex items-center gap-2 bg-[#FEF08A] text-[#0F172A] font-['Outfit'] font-semibold text-xs sm:text-sm px-4 py-1.5 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] max-w-[85%] sm:max-w-none">
+            <span>📸</span>
+            <span className="leading-snug">Sorry for using your photo, and sorry if it's not that good because I don't really have your photos 😭</span>
           </div>
 
-          {/* Close Button */}
           <button
             onClick={() => {
               playComicPopSound(400);
@@ -98,9 +87,9 @@ export default function PhotoScrapbookModal({ isOpen, onClose }) {
         </div>
 
         {/* Scrollable Polaroid Scrapbook Board */}
-        <div className="relative z-10 flex-1 overflow-y-auto p-4 sm:p-8 custom-scrollbar">
+        <div className="relative z-10 flex-1 overflow-y-auto px-4 sm:px-8 py-6 custom-scrollbar">
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-7 items-center justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 items-stretch justify-items-center">
             {scrapbookPhotos.map((photo, idx) => (
               <div
                 key={photo.id}
@@ -108,24 +97,29 @@ export default function PhotoScrapbookModal({ isOpen, onClose }) {
                   playComicPopSound(600 + idx * 50);
                   setSelectedPhoto(photo);
                 }}
-                className={`relative w-full max-w-[240px] bg-white text-[#0F172A] p-3 pb-5 rounded-2xl border-3 border-[#0F172A] shadow-[5px_5px_0_#0F172A,0_10px_20px_rgba(0,0,0,0.25)] cursor-pointer transition-all duration-300 ${photo.rotate} hover:rotate-0 hover:scale-105 hover:z-20 group`}
+                className="w-full max-w-[270px] sm:max-w-[290px] bg-white text-[#0F172A] p-3.5 pb-4 rounded-2xl border-3 border-[#0F172A] shadow-[4px_4px_0_#0F172A,0_10px_20px_rgba(0,0,0,0.3)] cursor-pointer transition-all duration-300 hover:scale-103 hover:shadow-[6px_6px_0_#0F172A,0_15px_25px_rgba(0,0,0,0.4)] flex flex-col justify-between group"
               >
-                {/* Washi Tape Accent on Top */}
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-4 bg-yellow-200/80 border border-[#0F172A] -rotate-2 shadow-sm rounded-sm pointer-events-none" />
+                {/* Photo Top Bar: Washi Tape + Badge (Safely contained inside card) */}
+                <div className="flex items-center justify-between mb-2">
+                  {/* Washi Tape */}
+                  <div className="w-16 h-4 bg-yellow-200 border border-[#0F172A] rounded-sm shadow-xs -rotate-2 flex items-center justify-center">
+                    <span className="text-[8px] font-bold text-amber-900/60 uppercase tracking-widest font-mono">✦ MEMORY ✦</span>
+                  </div>
 
-                {/* Sticker Badge */}
-                <div
-                  className={`absolute -top-2 -right-2 ${photo.badgeColor} font-['Bangers'] text-xs px-2.5 py-0.5 border-2 border-[#0F172A] rounded-full shadow-[2px_2px_0_#0F172A] rotate-12 z-10 pointer-events-none group-hover:scale-110 transition-transform`}
-                >
-                  {photo.badge}
+                  {/* Badge */}
+                  <div
+                    className={`${photo.badgeColor} font-['Bangers'] text-xs px-2.5 py-0.5 border-1.5 border-[#0F172A] rounded-full shadow-[1.5px_1.5px_0_#0F172A] rotate-3`}
+                  >
+                    {photo.badge}
+                  </div>
                 </div>
 
-                {/* Photo Image Frame */}
-                <div className="w-full h-40 bg-slate-100 border-2 border-[#0F172A] rounded-xl overflow-hidden relative">
+                {/* Photo Image Frame with Proportional Proportions */}
+                <div className="w-full aspect-[4/3] bg-slate-100 border-2 border-[#0F172A] rounded-xl overflow-hidden relative">
                   <img
                     src={photo.url}
                     alt={photo.caption}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Subtle Shimmer on Hover */}
                   <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
@@ -136,40 +130,15 @@ export default function PhotoScrapbookModal({ isOpen, onClose }) {
                   <p className="font-['Permanent_Marker'] text-xs sm:text-sm text-slate-800 leading-tight">
                     {photo.caption}
                   </p>
-                  <p className="font-['Outfit'] text-[10px] text-slate-400 font-bold mt-0.5">
+                  <p className="font-['Outfit'] text-[11px] text-slate-400 font-bold mt-0.5">
                     {photo.date}
                   </p>
                 </div>
 
-                {/* Cute Mini Spiderman sitting on the frame corner */}
-                {(idx === 1 || idx === 3 || idx === 5) && (
-                  <img
-                    src="/images/spiderman-transparent.png"
-                    alt="Spidey"
-                    className="absolute -bottom-3 -right-3 w-10 h-10 object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)] pointer-events-none group-hover:scale-125 transition-transform"
-                  />
-                )}
               </div>
             ))}
           </div>
 
-        </div>
-
-        {/* Bottom Hint */}
-        <div className="relative z-10 px-6 py-3 bg-white/10 border-t-2 border-[#0F172A] flex items-center justify-between text-white text-xs font-['Outfit']">
-          <div className="flex items-center gap-1.5 font-bold">
-            <Sparkles size={14} className="text-yellow-300" />
-            <span>Click any photo to view full size</span>
-          </div>
-          <button
-            onClick={() => {
-              playComicPopSound(400);
-              onClose();
-            }}
-            className="font-['Bangers'] tracking-wider bg-[#FEF08A] hover:bg-[#FDE047] text-[#0F172A] px-4 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] active:scale-95 cursor-pointer"
-          >
-            DONE ✨
-          </button>
         </div>
 
       </div>

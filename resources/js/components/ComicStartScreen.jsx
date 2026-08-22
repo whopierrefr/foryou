@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { playComicPopSound } from '../utils/soundEffects';
 
 export default function ComicStartScreen({ onStart }) {
   const [isExiting, setIsExiting] = useState(false);
 
   const handleStartClick = () => {
     if (isExiting) return;
+    playComicPopSound(540);
     setIsExiting(true);
     setTimeout(() => {
       onStart();

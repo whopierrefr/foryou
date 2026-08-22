@@ -14,9 +14,8 @@
     <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-    <!-- Compiled Production CSS & JS -->
-    <link rel="stylesheet" href="/build/assets/app-BWdatZmX.css">
-    <script type="module" src="/build/assets/app-DsDUd11v.js"></script>
+    @viteReactRefresh
+    @vite(['resources/css/app.css', 'resources/js/app.jsx'])
 </head>
 <body class="bg-[#FFF1F2] text-[#1E293B] selection:bg-[#FF4D6D] selection:text-white antialiased">
     <div id="root"></div>

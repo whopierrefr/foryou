@@ -15,11 +15,11 @@ export default function HeroDossier({ quote }) {
             🕷️ SPIDEY'S MESSAGE FOR MAXI! ✨
           </div>
           
-          <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-[#FF4D6D] overflow-hidden shadow-[0_0_20px_rgba(255,77,109,0.4)] bg-pink-100 flex items-center justify-center p-2">
+          <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-[#FF4D6D] overflow-hidden shadow-[0_0_20px_rgba(255,77,109,0.4)] bg-white flex items-center justify-center p-1">
             <img
-              src="/images/spiderman-transparent.png"
-              alt="Spiderman with Flowers"
-              className="w-full h-full object-contain"
+              src="/images/spidey-cute-doodle.jpg"
+              alt="Cute Spidey Doodle"
+              className="w-full h-full object-contain scale-105"
             />
           </div>
         </div>

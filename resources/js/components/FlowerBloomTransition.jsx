@@ -36,7 +36,7 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#090A1E] via-[#1A0C2E] to-[#2B0938] text-white select-none"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#090A1E] via-[#1A0C2E] to-[#2B0938] text-white select-none animate-fade-in"
     >
       {/* Dynamic Ambient Glow Behind Bouquet */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -96,7 +96,7 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
         </div>
       </div>
 
-      {/* Unified Frame Container: Proportions Stay Identical Across Phone, iPad, Laptop, PC */}
+      {/* Unified Frame Container */}
       <div className="relative w-full max-w-[440px] h-[100dvh] max-h-[850px] flex flex-col items-center justify-between py-3 sm:py-5 px-3 z-10">
         
         {/* Top Spacer for Balance */}
@@ -266,9 +266,9 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               </g>
             </svg>
 
-            {/* FLOWER HEADS (Layered Blossoming Petals - Clickable Buttons!) */}
+            {/* FLOWER HEADS (Layered Blossoming Petals - Clickable Buttons with Spacious Pills!) */}
             
-            {/* 1. CENTER QUEEN ROSE (Tap for Photo Memories Scrapbook - Lampiran 2) */}
+            {/* 1. CENTER QUEEN ROSE (Tap for Photo Memories Scrapbook) */}
             <div
               onClick={() => openFlower('scrapbook')}
               className="absolute z-30 transition-all duration-1000 ease-out cursor-pointer group"
@@ -281,9 +281,13 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click to open Photo Memories Scrapbook!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-9 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full border-2 border-[#0F172A] shadow-[2.5px_2.5px_0_#0F172A] whitespace-nowrap animate-bounce z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1.5">
-                  <span>📸</span>
-                  <span className="tracking-wider">PHOTOS</span>
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3 sm:px-3.5 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap animate-bounce z-40 group-hover:scale-115 transition-transform inline-flex items-center justify-center gap-1.5">
+                  <img
+                    src="/images/photos-icon.png"
+                    alt="Photo Icon"
+                    className="w-5 h-5 sm:w-5.5 sm:h-5.5 object-contain rounded-full border border-[#0F172A]"
+                  />
+                  <span className="tracking-wide">PHOTOS</span>
                   <span>✨</span>
                 </div>
               )}
@@ -322,13 +326,17 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
 
                 {/* Layer 3: Inner Swirl Core */}
                 <div
-                  className="relative z-10 w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-gradient-to-br from-[#FEF08A] via-[#FF4D6D] to-[#990024] border-2 border-amber-200 shadow-[0_0_15px_#FDE047] flex items-center justify-center group-hover:scale-115 transition-transform"
+                  className="relative z-10 w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-gradient-to-br from-[#FEF08A] via-[#FF4D6D] to-[#990024] border-2 border-amber-200 shadow-[0_0_15px_#FDE047] flex items-center justify-center group-hover:scale-115 transition-transform overflow-hidden"
                   style={{
                     transform: `scale(${bloomPhase >= 1 ? 1 : 0})`,
                     transition: 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s',
                   }}
                 >
-                  <span className="text-xs sm:text-sm animate-spin" style={{ animationDuration: '10s' }}>📸</span>
+                  <img
+                    src="/images/photos-icon.png"
+                    alt="Photo Icon"
+                    className="w-6 h-6 sm:w-7 sm:h-7 object-contain rounded-full"
+                  />
                 </div>
               </div>
             </div>
@@ -346,9 +354,14 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click to blow Birthday Cake Candles!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1">
-                  <span>🎂</span>
-                  <span className="tracking-wider">CAKE</span>
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3 sm:px-3.5 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center justify-center gap-1.5">
+                  <img
+                    src="/images/cake-icon.png"
+                    alt="Cake Icon"
+                    className="w-5 h-5 sm:w-5.5 sm:h-5.5 object-contain rounded-full border border-[#0F172A]"
+                  />
+                  <span className="tracking-wide">TALENT</span>
+                  <span>✨</span>
                 </div>
               )}
 
@@ -383,9 +396,14 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click to read Birthday Letter!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1">
-                  <span>💌</span>
-                  <span className="tracking-wider">LETTER</span>
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3 sm:px-3.5 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center justify-center gap-1.5">
+                  <img
+                    src="/images/letter-icon.png"
+                    alt="Letter Icon"
+                    className="w-5 h-5 sm:w-5.5 sm:h-5.5 object-contain rounded-full border border-[#0F172A]"
+                  />
+                  <span className="tracking-wide">LETTER</span>
+                  <span>✨</span>
                 </div>
               )}
 
@@ -420,9 +438,14 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click to view & write Wishes!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-[11px] sm:text-xs px-2.5 sm:px-3 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1">
-                  <span>📝</span>
-                  <span className="tracking-wider">WISHES</span>
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3 sm:px-3.5 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center justify-center gap-1.5">
+                  <img
+                    src="/images/wishes-icon.png"
+                    alt="Wishes Icon"
+                    className="w-5 h-5 sm:w-5.5 sm:h-5.5 object-contain rounded-full border border-[#0F172A]"
+                  />
+                  <span className="tracking-wide">PORKER</span>
+                  <span>✨</span>
                 </div>
               )}
 
@@ -456,9 +479,14 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click for Surprise Web Shooter!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-[11px] sm:text-xs px-2.5 sm:px-3 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1">
-                  <span>💥</span>
-                  <span className="tracking-wider">PARTY</span>
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3 sm:px-3.5 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center justify-center gap-1.5">
+                  <img
+                    src="/images/party-icon.png"
+                    alt="Party Icon"
+                    className="w-5 h-5 sm:w-5.5 sm:h-5.5 object-contain rounded-full border border-[#0F172A]"
+                  />
+                  <span className="tracking-wide">VIDEO</span>
+                  <span>✨</span>
                 </div>
               )}
 
@@ -512,15 +540,9 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               A BOUQUET OF WISHES FOR <span className="text-[#FF3366]">{heroName.toUpperCase()}!</span> 🌸
             </h2>
             
-            <p className="font-['Outfit'] text-slate-600 text-[11px] sm:text-xs leading-relaxed font-medium mb-2">
+            <p className="font-['Outfit'] text-slate-600 text-xs sm:text-sm leading-relaxed font-medium">
               "May your special day bloom with boundless smiles, sweet moments, and unforgettable adventures!"
             </p>
-
-            {/* Interactive Hint Indicator */}
-            <div className="inline-flex items-center gap-1.5 bg-[#FEF08A] text-[#0F172A] px-3 py-0.5 rounded-full border-1.5 border-[#0F172A] shadow-[1.5px_1.5px_0_#0F172A] text-[11px] font-bold font-['Outfit'] animate-pulse">
-              <span>💡</span>
-              <span>Ketuk bunga mana saja untuk membuka kejutan! ✨</span>
-            </div>
 
           </div>
         </div>
