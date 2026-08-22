@@ -4,6 +4,7 @@ import SpiderCake from './SpiderCake';
 import HeroDossier from './HeroDossier';
 import PeterPorker from './PeterPorker';
 import SpecialVideoPlayer from './SpecialVideoPlayer';
+import BirthdayCake21 from './BirthdayCake21';
 import { playComicPopSound } from '../utils/soundEffects';
 
 export default function FlowerSurpriseModals({ activeModal, onClose, heroName = 'Maxi', quote }) {
@@ -18,22 +19,26 @@ export default function FlowerSurpriseModals({ activeModal, onClose, heroName = 
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl max-h-[90vh] bg-white rounded-3xl border-4 border-[#0F172A] shadow-[8px_8px_0_#0F172A,0_20px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-comic-pop"
+        className={`relative w-full ${
+          activeModal === 'birthday-cake' ? 'max-w-4xl' : 'max-w-3xl'
+        } max-h-[92vh] bg-white rounded-3xl border-4 border-[#0F172A] shadow-[8px_8px_0_#0F172A,0_20px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-comic-pop`}
       >
         {/* Top Header */}
         <div className="relative z-10 px-5 sm:px-6 py-3.5 flex items-center justify-between border-b-3 border-[#0F172A] bg-gradient-to-r from-pink-100 via-rose-50 to-amber-50">
           <div className="flex items-center gap-2">
             <span className="text-xl">
-              {activeModal === 'cake' && '🎂'}
+              {activeModal === 'cake' && '🎤'}
               {activeModal === 'letter' && '💌'}
               {activeModal === 'guestbook' && '🐷'}
               {activeModal === 'surprise' && '🎬'}
+              {activeModal === 'birthday-cake' && '🎂'}
             </span>
             <h2 className="font-['Bangers'] text-lg sm:text-xl text-[#0F172A] tracking-wider">
               {activeModal === 'cake' && 'SWEET VOICE & COMPLIMENT FOR MAXI'}
               {activeModal === 'letter' && "SPIDEY'S SPECIAL LETTER FOR MAXI"}
               {activeModal === 'guestbook' && 'PETER PORKER (SPIDER-HAM)'}
               {activeModal === 'surprise' && 'SPECIAL VIDEO FOR MAXI'}
+              {activeModal === 'birthday-cake' && '21ST BIRTHDAY CAKE CEREMONY'}
             </h2>
           </div>
 
@@ -54,6 +59,7 @@ export default function FlowerSurpriseModals({ activeModal, onClose, heroName = 
           {activeModal === 'letter' && <HeroDossier quote={defaultQuote} />}
           {activeModal === 'guestbook' && <PeterPorker />}
           {activeModal === 'surprise' && <SpecialVideoPlayer />}
+          {activeModal === 'birthday-cake' && <BirthdayCake21 heroName={heroName} />}
         </div>
       </div>
     </div>

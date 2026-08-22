@@ -5,7 +5,11 @@ import FlowerSurpriseModals from './FlowerSurpriseModals';
 
 export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
   const [bloomPhase, setBloomPhase] = useState(0); // 0: start growing, 1: blooming, 2: full bloom & text reveal
-  const [activeModal, setActiveModal] = useState(null); // 'scrapbook', 'cake', 'letter', 'guestbook', 'surprise'
+  const [activeModal, setActiveModal] = useState(null); // 'scrapbook', 'cake', 'letter', 'guestbook', 'surprise', 'birthday-cake'
+  const [visitedFlowers, setVisitedFlowers] = useState(new Set());
+
+  const requiredFlowers = ['scrapbook', 'cake', 'letter', 'guestbook', 'surprise'];
+  const allFlowersVisited = requiredFlowers.every((f) => visitedFlowers.has(f));
 
   useEffect(() => {
     // 1. Play celestial bloom chime sound immediately on mount
@@ -31,6 +35,9 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
   const openFlower = (type) => {
     playComicPopSound(540);
     triggerPetalConfetti();
+    if (type !== 'birthday-cake') {
+      setVisitedFlowers((prev) => new Set([...prev, type]));
+    }
     setActiveModal(type);
   };
 
@@ -534,15 +541,46 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               : 'opacity-0 translate-y-8 scale-95 pointer-events-none'
           }`}
         >
-          <div className="bg-white/95 text-slate-800 rounded-2xl sm:rounded-3xl p-3 sm:p-4 border-3 border-[#0F172A] shadow-[0_8px_20px_rgba(255,77,109,0.3),4px_4px_0_#0F172A] backdrop-blur-md">
+          <div className="bg-white text-slate-800 rounded-3xl p-3.5 sm:p-4 border-3 border-[#0F172A] shadow-[4px_4px_0_#0F172A,0_10px_25px_rgba(0,0,0,0.3)]">
             
-            <h2 className="font-['Bangers'] text-lg sm:text-xl text-[#0F172A] tracking-wider mb-1">
-              A BOUQUET OF WISHES FOR <span className="text-[#FF3366]">{heroName.toUpperCase()}!</span> 🌸
-            </h2>
-            
-            <p className="font-['Outfit'] text-slate-600 text-xs sm:text-sm leading-relaxed font-medium">
-              "May your special day bloom with boundless smiles, sweet moments, and unforgettable adventures!"
-            </p>
+            {allFlowersVisited ? (
+              <div className="flex flex-col items-center gap-2">
+                {/* Washi Tape Header */}
+                <div className="bg-[#FEF08A] text-[#0F172A] px-3 py-0.5 rounded-sm border border-[#0F172A] -rotate-1 shadow-xs">
+                  <span className="font-['Bangers'] text-[11px] sm:text-xs tracking-widest text-[#0F172A] uppercase">
+                    FINAL CHAPTER UNLOCKED
+                  </span>
+                </div>
+
+                {/* Tactile Comic Action Button */}
+                <button
+                  onClick={() => openFlower('birthday-cake')}
+                  className="w-full py-2.5 sm:py-3 px-5 bg-[#FF4D6D] hover:bg-[#FF3366] active:translate-x-0.5 active:translate-y-0.5 text-white font-['Bangers'] text-base sm:text-lg tracking-wider rounded-2xl border-3 border-[#0F172A] shadow-[3px_3px_0_#0F172A] flex flex-col items-center justify-center transition-all cursor-pointer group"
+                >
+                  <span className="leading-tight group-hover:scale-102 transition-transform">
+                    BLOW OUT THE 21ST CANDLES
+                  </span>
+                  <span className="font-['Outfit'] font-bold text-[10px] sm:text-[11px] text-pink-100 tracking-normal opacity-90">
+                    Tap to open your birthday cake
+                  </span>
+                </button>
+              </div>
+            ) : (
+              <>
+                <h2 className="font-['Bangers'] text-lg sm:text-xl text-[#0F172A] tracking-wider mb-1">
+                  A BOUQUET OF WISHES FOR <span className="text-[#FF3366]">{heroName.toUpperCase()}</span>
+                </h2>
+                
+                <p className="font-['Outfit'] text-slate-600 text-xs sm:text-sm leading-relaxed font-medium">
+                  "May your special day bloom with boundless smiles, sweet moments, and unforgettable adventures!"
+                </p>
+
+                <div className="mt-2.5 inline-flex items-center gap-2 px-3.5 py-1 bg-pink-50 rounded-full border border-[#0F172A] text-[11px] font-bold text-[#0F172A] font-['Outfit'] shadow-[1.5px_1.5px_0_#0F172A]">
+                  <span className="w-2 h-2 rounded-full bg-[#FF4D6D] animate-ping" />
+                  <span>Explored {visitedFlowers.size}/5 Chapters</span>
+                </div>
+              </>
+            )}
 
           </div>
         </div>

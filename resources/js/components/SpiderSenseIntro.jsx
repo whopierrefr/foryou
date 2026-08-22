@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { X } from 'lucide-react';
 import { playThwipSound, playComicPopSound, triggerSpiderConfetti } from '../utils/soundEffects';
 
 const step1Lines = [
@@ -17,6 +18,10 @@ export default function SpiderSenseIntro({ onUnlock }) {
   const [displayedLine2, setDisplayedLine2] = useState('');
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false); // Smooth cinematic fade transition
+  
+  // Wish popup modal state
+  const [showWishModal, setShowWishModal] = useState(false);
+  const [savedWish, setSavedWish] = useState('');
 
   // Typewriter effect triggered whenever currentStep changes (for steps 1 & 2)
   useEffect(() => {
@@ -58,13 +63,10 @@ export default function SpiderSenseIntro({ onUnlock }) {
             }
           }, 14);
         }
-      }, 14);
+      }, 16);
 
-      return () => {
-        clearInterval(intervalLine1);
-        if (intervalLine2) clearInterval(intervalLine2);
-      };
-    }, 80);
+      return () => clearInterval(intervalLine1);
+    }, 150);
 
     return () => {
       clearTimeout(startDelay);
@@ -73,7 +75,9 @@ export default function SpiderSenseIntro({ onUnlock }) {
   }, [currentStep]);
 
   const handleNextStep = () => {
-    playComicPopSound(540);
+    playComicPopSound(500);
+    triggerSpiderConfetti(0.5, 0.4);
+
     if (currentStep === 1) {
       setCurrentStep(2);
     } else if (currentStep === 2) {
@@ -81,20 +85,27 @@ export default function SpiderSenseIntro({ onUnlock }) {
     }
   };
 
-  const handleUnlock = () => {
-    if (isTransitioning) return;
+  const handleUnlockFlowers = () => {
+    // 1. Play comic superhero pop sound
+    playThwipSound();
+
+    // 2. Trigger colorful celebration confetti explosion
+    triggerSpiderConfetti(0.5, 0.5);
+
+    // 3. Initiate smooth dark cinematic cross-fade
     setIsTransitioning(true);
 
-    playComicPopSound(540);
-    playThwipSound();
-    triggerSpiderConfetti(0.5, 0.5);
-    setTimeout(() => triggerSpiderConfetti(0.3, 0.4), 200);
-    setTimeout(() => triggerSpiderConfetti(0.7, 0.4), 400);
-
-    // Smooth 750ms cinematic dissolve into Flower Bloom screen
+    // 4. Trigger next stage callback
     setTimeout(() => {
       onUnlock();
-    }, 750);
+    }, 600);
+  };
+
+  const handleOpenWishModal = () => {
+    playComicPopSound(500);
+    const wish = localStorage.getItem('user_birthday_wish') || '';
+    setSavedWish(wish);
+    setShowWishModal(true);
   };
 
   return (
@@ -119,12 +130,16 @@ export default function SpiderSenseIntro({ onUnlock }) {
             <span className="block h-1.5 bg-[#BAE6FD] rounded-full shadow-[0_0_8px_#BAE6FD] w-5 spider-sense-wave-3"></span>
           </div>
 
-          {/* Comic Alert Badge */}
-          <div className="bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-base sm:text-lg px-5 py-1.5 rounded-full border-[2.5px] border-[#0F172A] shadow-[3px_3px_0_#0F172A] -rotate-1 tracking-wider inline-flex items-center gap-2">
+          {/* Comic Alert Badge - Clickable to View Wishes */}
+          <button
+            onClick={handleOpenWishModal}
+            className="bg-[#FEF08A] hover:bg-[#FDE047] active:translate-x-0.5 active:translate-y-0.5 text-[#0F172A] font-['Bangers'] text-base sm:text-lg px-5 py-1.5 rounded-full border-[2.5px] border-[#0F172A] shadow-[3px_3px_0_#0F172A] -rotate-1 tracking-wider inline-flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
+            title="Click to view Maxi's Birthday Wish"
+          >
             <span>🕷️</span>
             <span>SPIDEY-SENSE DETECTS A BIRTHDAY!</span>
             <span>✨</span>
-          </div>
+          </button>
 
           <div className="flex flex-col gap-1 items-start">
             <span className="block h-1.5 bg-[#FF3366] rounded-full shadow-[0_0_8px_#FF3366] w-8 spider-sense-wave-1"></span>
@@ -198,8 +213,8 @@ export default function SpiderSenseIntro({ onUnlock }) {
                         <div className="absolute top-1 left-4 right-4 h-1.5 bg-gradient-to-r from-white/85 via-pink-100/50 to-transparent rounded-full pointer-events-none" />
                         
                         <div className="flex items-center gap-2.5 font-['Bangers'] text-xl sm:text-2xl tracking-widest text-white drop-shadow-[1.5px_1.5px_0_#0F172A]">
-                          <span>NEXT</span>
-                          <span className="text-lg group-hover:translate-x-1 transition-transform">➔</span>
+                          <span>{currentStep === 1 ? 'NEXT' : 'CONTINUE'}</span>
+                          <span className="group-hover:translate-x-1.5 transition-transform text-2xl">➔</span>
                         </div>
                       </button>
                     </div>
@@ -207,40 +222,32 @@ export default function SpiderSenseIntro({ onUnlock }) {
                 </>
               )}
 
-              {/* STEP 3: Discord Promise Proof Screenshot */}
+              {/* STEP 3: Final Call to Action -> Flower Bouquet Unlock */}
               {currentStep === 3 && (
-                <div className="animate-comic-pop flex flex-col items-center">
-                  {/* Header Tag */}
-                  <div className="inline-flex items-center gap-2 bg-[#FEF08A] text-[#0F172A] border-2 border-[#0F172A] font-['Bangers'] text-sm sm:text-base px-4 py-1 rounded-full shadow-[2px_2px_0_#0F172A] mb-3">
-                    <span>📜</span>
-                    <span>A PROMISE FULFILLED!</span>
-                    <span>✨</span>
+                <div className="flex flex-col items-center text-center animate-comic-pop">
+                  <div className="inline-block bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-sm sm:text-base px-4 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] mb-3 -rotate-1">
+                    FINAL SURPRISE UNLOCKED
                   </div>
 
-                  {/* Screenshot Container */}
-                  <div className="w-full rounded-2xl overflow-hidden border-2.5 border-[#0F172A] shadow-[4px_4px_0_#0F172A] bg-[#313338] p-2 sm:p-3 mb-5">
-                    <img
-                      src="/images/promise-proof.png"
-                      alt="Discord Promise Proof"
-                      className="w-full h-auto max-h-[360px] object-contain rounded-xl mx-auto"
-                    />
-                  </div>
+                  <h2 className="font-['Bangers'] text-2xl sm:text-3xl lg:text-4xl text-[#0F172A] tracking-wider mb-3">
+                    A SPECIAL FLOWER BOUQUET FOR YOU!
+                  </h2>
 
-                  {/* Final Unlock Action Button */}
-                  <div className="w-full flex justify-center pt-1">
-                    <button
-                      onClick={handleUnlock}
-                      className="relative inline-flex items-center justify-center px-8 sm:px-12 py-3 sm:py-3.5 bg-gradient-to-b from-[#FF4D6D] via-[#FF2A55] to-[#E6194B] text-white rounded-full border-[3px] border-[#0F172A] shadow-[0_5px_0_#0F172A,0_8px_18px_rgba(255,42,85,0.35)] hover:shadow-[0_7px_0_#0F172A,0_12px_22px_rgba(255,42,85,0.5)] hover:-translate-y-0.5 active:translate-y-1.5 active:shadow-[0_1px_0_#0F172A] transition-all cursor-pointer overflow-hidden group"
-                    >
-                      {/* Top Gloss Highlight */}
-                      <div className="absolute top-1 left-4 right-4 h-1.5 bg-gradient-to-r from-white/85 via-pink-100/50 to-transparent rounded-full pointer-events-none" />
-                      
-                      <div className="flex items-center gap-2 font-['Bangers'] text-lg sm:text-xl tracking-wider text-white drop-shadow-[1.5px_1.5px_0_#0F172A]">
-                        <span>OPEN THE GIFT</span>
-                        <span>✨</span>
-                      </div>
-                    </button>
-                  </div>
+                  <p className="font-['Outfit'] text-slate-700 text-base sm:text-lg leading-relaxed max-w-lg mb-6">
+                    A digital flower bouquet with 5 secret birthday surprises prepared just for you. Click below to enter!
+                  </p>
+
+                  <button
+                    onClick={handleUnlockFlowers}
+                    className="relative inline-flex items-center justify-center px-10 sm:px-14 py-3.5 sm:py-4 bg-gradient-to-b from-[#FF4D6D] via-[#FF2A55] to-[#E6194B] text-white rounded-full border-[3.5px] border-[#0F172A] shadow-[0_6px_0_#0F172A,0_12px_24px_rgba(255,42,85,0.4)] hover:shadow-[0_8px_0_#0F172A,0_16px_28px_rgba(255,42,85,0.55)] hover:-translate-y-1 active:translate-y-1.5 active:shadow-[0_1px_0_#0F172A] transition-all cursor-pointer overflow-hidden group animate-bounce-subtle"
+                  >
+                    <div className="absolute top-1 left-4 right-4 h-2 bg-gradient-to-r from-white/90 via-pink-100/60 to-transparent rounded-full pointer-events-none" />
+                    
+                    <div className="flex items-center gap-3 font-['Bangers'] text-xl sm:text-2xl tracking-widest text-white drop-shadow-[2px_2px_0_#0F172A]">
+                      <span>ENTER THE CELEBRATION</span>
+                      <span className="text-2xl group-hover:scale-125 transition-transform">🌸</span>
+                    </div>
+                  </button>
                 </div>
               )}
 
@@ -251,6 +258,89 @@ export default function SpiderSenseIntro({ onUnlock }) {
         </div>
 
       </section>
+
+      {/* ================= MODAL: MAXI'S BIRTHDAY WISH VAULT ================= */}
+      {showWishModal && (
+        <div
+          onClick={() => setShowWishModal(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-lg bg-white rounded-3xl border-4 border-[#0F172A] shadow-[8px_8px_0_#0F172A,0_20px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-comic-pop"
+          >
+            {/* Top Modal Header */}
+            <div className="px-5 sm:px-6 py-3.5 flex items-center justify-between border-b-3 border-[#0F172A] bg-gradient-to-r from-amber-100 via-pink-50 to-rose-100">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">✨</span>
+                <h3 className="font-['Bangers'] text-lg sm:text-xl text-[#0F172A] tracking-wider">
+                  SPIDEY-SENSE BIRTHDAY WISH VAULT
+                </h3>
+              </div>
+
+              <button
+                onClick={() => {
+                  playComicPopSound(400);
+                  setShowWishModal(false);
+                }}
+                className="w-8 h-8 sm:w-9 sm:h-9 bg-[#FEF08A] hover:bg-[#FDE047] text-[#0F172A] rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] flex items-center justify-center font-bold transition-transform active:scale-90 cursor-pointer"
+              >
+                <X size={18} strokeWidth={3} />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-5 sm:p-7 bg-[#FFF1F2] flex flex-col items-center text-center">
+              {savedWish ? (
+                /* Wish is Present */
+                <div className="w-full flex flex-col items-center">
+                  <div className="inline-block bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-4 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] mb-3.5 -rotate-1">
+                    MAXI'S CHAPTER 21 WISH
+                  </div>
+
+                  <div className="w-full bg-white border-3 border-[#0F172A] rounded-2xl p-5 sm:p-6 shadow-[4px_4px_0_#0F172A] text-left relative mb-4">
+                    <span className="text-[10px] sm:text-xs font-bold uppercase text-pink-600 font-mono tracking-wider block mb-1.5">
+                      SEALED WISH:
+                    </span>
+                    <p className="font-['Outfit'] font-semibold text-sm sm:text-base text-slate-800 italic leading-relaxed">
+                      "{savedWish}"
+                    </p>
+                  </div>
+
+                  <p className="font-['Outfit'] font-bold text-xs sm:text-sm text-pink-600 mb-4">
+                    ✨ Locked in the stars • May every word come true! ✨
+                  </p>
+                </div>
+              ) : (
+                /* No Wish Yet */
+                <div className="w-full flex flex-col items-center">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-100 border-2.5 border-[#0F172A] flex items-center justify-center text-3xl mb-3 shadow-[2px_2px_0_#0F172A]">
+                    🎂
+                  </div>
+
+                  <h4 className="font-['Bangers'] text-xl sm:text-2xl text-[#0F172A] tracking-wide mb-2">
+                    NO BIRTHDAY WISH DETECTED YET!
+                  </h4>
+
+                  <p className="font-['Outfit'] font-medium text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mb-5">
+                    Proceed to the flower bouquet, explore all 5 surprises, and blow out the Chapter 21 candles on the Birthday Cake to lock in your special wish!
+                  </p>
+                </div>
+              )}
+
+              <button
+                onClick={() => {
+                  playComicPopSound(400);
+                  setShowWishModal(false);
+                }}
+                className="py-2.5 px-8 bg-[#FF4D6D] hover:bg-[#FF3366] active:translate-x-0.5 active:translate-y-0.5 text-white font-['Bangers'] text-sm sm:text-base tracking-wider rounded-xl border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] cursor-pointer"
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

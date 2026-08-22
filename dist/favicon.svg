@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4D6D" />
+      <stop offset="100%" stop-color="#FF2A55" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#pinkGrad)" stroke="#0F172A" stroke-width="4"/>
+  <rect x="6" y="6" width="52" height="22" rx="11" fill="#FFFFFF" fill-opacity="0.3"/>
+  <text x="32" y="44" font-family="'Arial Black', 'Impact', sans-serif" font-size="32" font-weight="900" text-anchor="middle" fill="#FFFFFF" stroke="#0F172A" stroke-width="2">21</text>
+</svg>
