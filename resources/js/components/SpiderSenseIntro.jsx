@@ -85,7 +85,7 @@ export default function SpiderSenseIntro({ onUnlock }) {
     }
   };
 
-  const handleUnlockFlowers = () => {
+  const handleUnlock = () => {
     // 1. Play comic superhero pop sound
     playThwipSound();
 
@@ -213,8 +213,8 @@ export default function SpiderSenseIntro({ onUnlock }) {
                         <div className="absolute top-1 left-4 right-4 h-1.5 bg-gradient-to-r from-white/85 via-pink-100/50 to-transparent rounded-full pointer-events-none" />
                         
                         <div className="flex items-center gap-2.5 font-['Bangers'] text-xl sm:text-2xl tracking-widest text-white drop-shadow-[1.5px_1.5px_0_#0F172A]">
-                          <span>{currentStep === 1 ? 'NEXT' : 'CONTINUE'}</span>
-                          <span className="group-hover:translate-x-1.5 transition-transform text-2xl">➔</span>
+                          <span>NEXT</span>
+                          <span className="text-lg group-hover:translate-x-1 transition-transform">➔</span>
                         </div>
                       </button>
                     </div>
@@ -222,32 +222,40 @@ export default function SpiderSenseIntro({ onUnlock }) {
                 </>
               )}
 
-              {/* STEP 3: Final Call to Action -> Flower Bouquet Unlock */}
+              {/* STEP 3: Discord Promise Proof Screenshot */}
               {currentStep === 3 && (
-                <div className="flex flex-col items-center text-center animate-comic-pop">
-                  <div className="inline-block bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-sm sm:text-base px-4 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] mb-3 -rotate-1">
-                    FINAL SURPRISE UNLOCKED
+                <div className="animate-comic-pop flex flex-col items-center">
+                  {/* Header Tag */}
+                  <div className="inline-flex items-center gap-2 bg-[#FEF08A] text-[#0F172A] border-2 border-[#0F172A] font-['Bangers'] text-sm sm:text-base px-4 py-1 rounded-full shadow-[2px_2px_0_#0F172A] mb-3">
+                    <span>📜</span>
+                    <span>A PROMISE FULFILLED!</span>
+                    <span>✨</span>
                   </div>
 
-                  <h2 className="font-['Bangers'] text-2xl sm:text-3xl lg:text-4xl text-[#0F172A] tracking-wider mb-3">
-                    A SPECIAL FLOWER BOUQUET FOR YOU!
-                  </h2>
+                  {/* Screenshot Container */}
+                  <div className="w-full rounded-2xl overflow-hidden border-2.5 border-[#0F172A] shadow-[4px_4px_0_#0F172A] bg-[#313338] p-2 sm:p-3 mb-5">
+                    <img
+                      src="/images/promise-proof.png"
+                      alt="Discord Promise Proof"
+                      className="w-full h-auto max-h-[360px] object-contain rounded-xl mx-auto"
+                    />
+                  </div>
 
-                  <p className="font-['Outfit'] text-slate-700 text-base sm:text-lg leading-relaxed max-w-lg mb-6">
-                    A digital flower bouquet with 5 secret birthday surprises prepared just for you. Click below to enter!
-                  </p>
-
-                  <button
-                    onClick={handleUnlockFlowers}
-                    className="relative inline-flex items-center justify-center px-10 sm:px-14 py-3.5 sm:py-4 bg-gradient-to-b from-[#FF4D6D] via-[#FF2A55] to-[#E6194B] text-white rounded-full border-[3.5px] border-[#0F172A] shadow-[0_6px_0_#0F172A,0_12px_24px_rgba(255,42,85,0.4)] hover:shadow-[0_8px_0_#0F172A,0_16px_28px_rgba(255,42,85,0.55)] hover:-translate-y-1 active:translate-y-1.5 active:shadow-[0_1px_0_#0F172A] transition-all cursor-pointer overflow-hidden group animate-bounce-subtle"
-                  >
-                    <div className="absolute top-1 left-4 right-4 h-2 bg-gradient-to-r from-white/90 via-pink-100/60 to-transparent rounded-full pointer-events-none" />
-                    
-                    <div className="flex items-center gap-3 font-['Bangers'] text-xl sm:text-2xl tracking-widest text-white drop-shadow-[2px_2px_0_#0F172A]">
-                      <span>ENTER THE CELEBRATION</span>
-                      <span className="text-2xl group-hover:scale-125 transition-transform">🌸</span>
-                    </div>
-                  </button>
+                  {/* Final Unlock Action Button */}
+                  <div className="w-full flex justify-center pt-1">
+                    <button
+                      onClick={handleUnlock}
+                      className="relative inline-flex items-center justify-center px-8 sm:px-12 py-3 sm:py-3.5 bg-gradient-to-b from-[#FF4D6D] via-[#FF2A55] to-[#E6194B] text-white rounded-full border-[3px] border-[#0F172A] shadow-[0_5px_0_#0F172A,0_8px_18px_rgba(255,42,85,0.35)] hover:shadow-[0_7px_0_#0F172A,0_12px_22px_rgba(255,42,85,0.5)] hover:-translate-y-0.5 active:translate-y-1.5 active:shadow-[0_1px_0_#0F172A] transition-all cursor-pointer overflow-hidden group"
+                    >
+                      {/* Top Gloss Highlight */}
+                      <div className="absolute top-1 left-4 right-4 h-1.5 bg-gradient-to-r from-white/85 via-pink-100/50 to-transparent rounded-full pointer-events-none" />
+                      
+                      <div className="flex items-center gap-2 font-['Bangers'] text-lg sm:text-xl tracking-wider text-white drop-shadow-[1.5px_1.5px_0_#0F172A]">
+                        <span>OPEN THE GIFT</span>
+                        <span>✨</span>
+                      </div>
+                    </button>
+                  </div>
                 </div>
               )}
 
