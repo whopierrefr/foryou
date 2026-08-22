@@ -27,7 +27,9 @@
   ],
   "env": {
     "APP_ENV": "production",
+    "APP_KEY": "base64:Tql0dxPTB3f5VkSJRFs3hksLz/r/KWnqXBRpbkh4GC0=",
     "APP_DEBUG": "false",
+    "VERCEL": "1",
     "DB_CONNECTION": "sqlite",
     "DB_DATABASE": "/tmp/database.sqlite",
     "APP_CONFIG_CACHE": "/tmp/config.php",
@@ -35,7 +37,7 @@
     "APP_PACKAGES_CACHE": "/tmp/packages.php",
     "APP_ROUTES_CACHE": "/tmp/routes.php",
     "APP_SERVICES_CACHE": "/tmp/services.php",
-    "VIEW_COMPILED_PATH": "/tmp/views",
+    "VIEW_COMPILED_PATH": "/tmp/storage/framework/views",
     "CACHE_STORE": "array",
     "SESSION_DRIVER": "cookie",
     "LOG_CHANNEL": "stderr"

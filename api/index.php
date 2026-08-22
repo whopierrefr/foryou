@@ -1,15 +1,16 @@
 <?php
 
-// Ensure temporary writable directories exist for Laravel on Vercel Serverless
+// Ensure all temporary writable storage directories exist for Laravel on Vercel
 $storageDirs = [
+    '/tmp/storage',
+    '/tmp/storage/app',
+    '/tmp/storage/logs',
+    '/tmp/storage/framework',
+    '/tmp/storage/framework/views',
+    '/tmp/storage/framework/sessions',
+    '/tmp/storage/framework/cache',
+    '/tmp/storage/framework/cache/data',
     '/tmp/views',
-    '/tmp/sessions',
-    '/tmp/cache',
-    '/tmp/logs',
-    '/tmp/framework',
-    '/tmp/framework/views',
-    '/tmp/framework/sessions',
-    '/tmp/framework/cache',
 ];
 
 foreach ($storageDirs as $dir) {
