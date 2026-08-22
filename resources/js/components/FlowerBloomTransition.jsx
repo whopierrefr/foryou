@@ -281,8 +281,10 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click to open Photo Memories Scrapbook!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-[11px] sm:text-xs px-2.5 py-0.5 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap animate-bounce z-40 group-hover:scale-110 transition-transform">
-                  📸 PHOTOS ✨
+                <div className="absolute -top-9 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full border-2 border-[#0F172A] shadow-[2.5px_2.5px_0_#0F172A] whitespace-nowrap animate-bounce z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1.5">
+                  <span>📸</span>
+                  <span className="tracking-wider">PHOTOS</span>
+                  <span>✨</span>
                 </div>
               )}
 
@@ -344,8 +346,9 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click to blow Birthday Cake Candles!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-[10px] sm:text-xs px-2 py-0.5 rounded-full border-1.5 border-[#0F172A] shadow-[1.5px_1.5px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-110 transition-transform">
-                  🎂 CAKE
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1">
+                  <span>🎂</span>
+                  <span className="tracking-wider">CAKE</span>
                 </div>
               )}
 
@@ -380,8 +383,9 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click to read Birthday Letter!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-[10px] sm:text-xs px-2 py-0.5 rounded-full border-1.5 border-[#0F172A] shadow-[1.5px_1.5px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-110 transition-transform">
-                  💌 LETTER
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-xs sm:text-sm px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1">
+                  <span>💌</span>
+                  <span className="tracking-wider">LETTER</span>
                 </div>
               )}
 
@@ -416,8 +420,9 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click to view & write Wishes!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-full border border-[#0F172A] shadow-sm whitespace-nowrap z-40 group-hover:scale-110 transition-transform">
-                  📝 WISHES
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-[11px] sm:text-xs px-2.5 sm:px-3 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1">
+                  <span>📝</span>
+                  <span className="tracking-wider">WISHES</span>
                 </div>
               )}
 
@@ -451,8 +456,9 @@ export default function FlowerBloomTransition({ heroName = 'Maxi' }) {
               title="Click for Surprise Web Shooter!"
             >
               {bloomPhase >= 2 && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-full border border-[#0F172A] shadow-sm whitespace-nowrap z-40 group-hover:scale-110 transition-transform">
-                  💥 PARTY
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#FEF08A] text-[#0F172A] font-['Bangers'] text-[11px] sm:text-xs px-2.5 sm:px-3 py-1 rounded-full border-2 border-[#0F172A] shadow-[2px_2px_0_#0F172A] whitespace-nowrap z-40 group-hover:scale-115 transition-transform inline-flex items-center gap-1">
+                  <span>💥</span>
+                  <span className="tracking-wider">PARTY</span>
                 </div>
               )}
 
